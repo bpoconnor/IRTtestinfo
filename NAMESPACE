@@ -1,0 +1,9 @@
+export(fluctuating)
+
+importFrom("MASS", "mvrnorm")
+
+importFrom("grDevices", "hcl")
+
+importFrom("stats", "cor", "rnorm", "sd")
+
+importFrom("utils", "setTxtProgressBar", "txtProgressBar")

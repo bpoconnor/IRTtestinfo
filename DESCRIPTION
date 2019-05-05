@@ -1,0 +1,18 @@
+Package: IRTtestinfo
+Type: Package
+Title: IRTtestinfo
+Version: 0.1.1
+Date: 2019-05-03
+Author: Brian P. O'Connor 
+Maintainer: Brian P. O'Connor  <brian.oconnor@ubc.ca>
+Description:
+  A function that estimates the levels of attenuation in correlation that occurs 
+  for two variables, given the IRT test information values for the two measures.
+  It also provides the test information functions for a number of assessment 
+  instruments in the literature.
+Imports: MASS
+LazyLoad: yes
+LazyData: yes
+License: GPL (>= 2)
+NeedsCompilation: no
+Packaged: 2018-10-29 06:35:35 UTC; brianoconnor

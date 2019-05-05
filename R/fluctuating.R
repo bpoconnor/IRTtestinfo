@@ -44,6 +44,21 @@ cat('\n\n\n\nIRT attenuation:\n')
 
 
 
+norealobsdR <- F
+if (is.null(rawdata1) | is.null(rawdata2)) {
+
+	norealobsdR <- T
+
+	if (is.null(rawdata1) & is.null(rawdata2)) Ncases = 1000
+	
+	if (is.null(rawdata1) == F) Ncases = length(rawdata1)
+	if (is.null(rawdata2) == F) Ncases = length(rawdata2)
+	
+	if (is.null(rawdata1)) rawdata1 <- rnorm(n = Ncases, mean = distribMN1, sd = distribSD1) 
+	if (is.null(rawdata2)) rawdata2 <- rnorm(n = Ncases, mean = distribMN2, sd = distribSD2) 
+}
+
+
 # check on the variable distributions
 # v1MNdiff <- abs(distribMN1 - mean(rawdata1))
 # v2MNdiff <- abs(distribMN2 - mean(rawdata2))
@@ -65,16 +80,6 @@ cat('\nto the set values for distribMN and distribSD. The default set values are
 cat('\nThe rawdata scores should be standardized. If the distributions of the rawdata')
 cat('\nare different from the set values, then errors may result.\n')
 
-
-if (is.null(rawdata1) | is.null(rawdata2)) {
-	
-	if (is.null(rawdata1) == F) Ncases = length(rawdata1)
-	if (is.null(rawdata2) == F) Ncases = length(rawdata2)
-	if (is.null(rawdata1) & is.null(rawdata2)) Ncases = 1000
-	
-	if (is.null(rawdata1)) rawdata1 <- rnorm(n = Ncases, mean = distribMN1, sd = distribSD1) 
-	if (is.null(rawdata2)) rawdata2 <- rnorm(n = Ncases, mean = distribMN2, sd = distribSD2) 
-}
 
 
 # setting any negative information values to 0
@@ -171,8 +176,7 @@ cat('\n\n\nThe specified population correlation for the analyses = ', round(rTru
     '\n\nThe proportionate reduction in correlation when using the raw data distribution for Measure 1 =', round(propred1,2),
     '\n\nThe proportionate reduction in correlation when using the raw data distribution for Measure 2 =', round(propred2,2) )    
 
-
-if (is.null(rawdata1) == F & is.null(rawdata2) == F) rObserved <- cor(rawdata1,rawdata2)
+if (norealobsdR== F) rObserved <- cor(rawdata1,rawdata2)
 
 if (is.null(rObserved) == F) {
 	correctedR1 <- rObserved / (1 - propred1)

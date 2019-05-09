@@ -1,4 +1,4 @@
-export(fluctuating)
+export(fluctuating_info, constant_info)
 
 importFrom("MASS", "mvrnorm")
 
@@ -7,3 +7,7 @@ importFrom("grDevices", "hcl")
 importFrom("stats", "cor", "rnorm", "sd")
 
 importFrom("utils", "setTxtProgressBar", "txtProgressBar")
+
+importFrom("lattice", "levelplot")
+
+importFrom("grDevices", "colorRampPalette")
